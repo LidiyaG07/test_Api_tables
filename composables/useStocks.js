@@ -7,8 +7,16 @@ export const useStocks = () => {
     const loading = ref(false)
     const { fetchData } = useCustomFetch()
 
+    const getCurrentDate = () => {
+        const now = new Date()
+        const year = now.getFullYear()
+        const month = String(now.getMonth() + 1).padStart(2, '0')
+        const day = String(now.getDate()).padStart(2, '0')
+        return `${year}-${month}-${day}`
+    }
+
     const params = reactive({
-        dateFrom: '2025-10-01',
+        dateFrom: getCurrentDate(),
         dateTo: '2025-10-01',
         page: 1,
         key: 'E6kUTYrYwZq2tN4QEtyzsbEBk3ie',
